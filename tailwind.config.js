@@ -1,10 +1,7 @@
-module.exports = {
+/** @type {import('tailwindcss').Config} */
+export default {
     darkMode: ["class"],
-    content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
-    "./public/index.html",
-    "./node_modules/@shadcn/ui/**/*.{js,jsx,ts,tsx}",
-  ],
+    content: ["./index.html", "./src/**/*.{ts,tsx,js,jsx}"],
   theme: {
   	extend: {
   		borderRadius: {
@@ -56,5 +53,5 @@ module.exports = {
   		}
   	}
   },
-  plugins: [require("@shadcn/ui"), require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate")],
 };
