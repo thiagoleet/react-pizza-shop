@@ -8,7 +8,14 @@ import {
 
 import colors from "tailwindcss/colors";
 
-import { ResponsiveContainer, LineChart, XAxis, YAxis, Line } from "recharts";
+import {
+  ResponsiveContainer,
+  LineChart,
+  XAxis,
+  YAxis,
+  Line,
+  CartesianGrid,
+} from "recharts";
 
 const dataMock = [
   {
@@ -78,6 +85,10 @@ export function RevenueChart() {
                   currency: "BRL",
                 })
               }
+            />
+            <CartesianGrid
+              vertical={false}
+              className="stroke-muted"
             />
             <Line
               type="linear"
