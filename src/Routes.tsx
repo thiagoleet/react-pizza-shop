@@ -6,6 +6,7 @@ import { AuthLayout } from "./pages/_layouts/auth";
 
 // App
 import { DashboardPage } from "./pages/app/dashboard";
+import { OrdersPage } from "./pages/app/orders";
 
 // Auth
 import { SignInPage } from "./pages/auth/sign-in";
@@ -19,6 +20,10 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <DashboardPage />,
+      },
+      {
+        path: "/orders",
+        element: <OrdersPage />,
       },
     ],
   },
