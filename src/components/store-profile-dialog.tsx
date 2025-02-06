@@ -1,8 +1,10 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "sonner";
 
 import {
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -18,6 +20,7 @@ import {
   storeProfileSchema,
   StoreProfileSchema,
 } from "@/schemas/store-profile.schema";
+import { updateProfile } from "@/api/update-profile";
 
 export function StoreProfileDialog() {
   const { data: managedRestaurant, isLoading: isLoadingManagedRestaurant } =
@@ -26,13 +29,36 @@ export function StoreProfileDialog() {
       queryFn: getManagedRestaurant,
     });
 
-  const { register, handleSubmit } = useForm<StoreProfileSchema>({
+  const { mutateAsync: updateProfileFn } = useMutation({
+    mutationFn: updateProfile,
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { isSubmitting },
+  } = useForm<StoreProfileSchema>({
     resolver: zodResolver(storeProfileSchema),
     values: {
       name: managedRestaurant?.name ?? "",
       description: managedRestaurant?.description ?? "",
     },
   });
+
+  async function handleUpdateProfile({
+    name,
+    description,
+  }: StoreProfileSchema) {
+    try {
+      await updateProfileFn({ name, description });
+
+      toast.success("Perfil da loja atualizado com sucesso");
+    } catch (error) {
+      console.error(error);
+
+      toast.error("Não foi possível atualizar o perfil da loja");
+    }
+  }
 
   return (
     <DialogContent>
@@ -43,7 +69,7 @@ export function StoreProfileDialog() {
         </DialogDescription>
       </DialogHeader>
 
-      <form onSubmit={handleSubmit((data) => console.log(data))}>
+      <form onSubmit={handleSubmit(handleUpdateProfile)}>
         <div className="space-y-4 py-4">
           <div className="grid grid-cols-4 items-center gap-4">
             <Label
@@ -72,15 +98,18 @@ export function StoreProfileDialog() {
           </div>
         </div>
         <DialogFooter>
-          <Button
-            variant="ghost"
-            type="button"
-          >
-            Cancelar
-          </Button>
+          <DialogClose asChild>
+            <Button
+              variant="ghost"
+              type="button"
+            >
+              Cancelar
+            </Button>
+          </DialogClose>
           <Button
             type="submit"
             variant="success"
+            disabled={isLoadingManagedRestaurant || isSubmitting}
           >
             Salvar
           </Button>
