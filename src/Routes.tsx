@@ -5,7 +5,7 @@ import { AppLayout } from "./pages/_layouts/app";
 import { AuthLayout } from "./pages/_layouts/auth";
 
 // App
-import { DashboardPage } from "./pages/app/dashboard";
+import { DashboardPage } from "./pages/app/dashboard/dashboard";
 import { OrdersPage } from "./pages/app/orders/orders";
 
 // Auth
