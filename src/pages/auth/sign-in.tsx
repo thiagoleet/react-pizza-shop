@@ -5,6 +5,7 @@ import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { toast } from "sonner";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const signInFormSchema = z.object({
@@ -21,9 +22,16 @@ export function SignInPage() {
   } = useForm<SignInForm>();
 
   async function handleSignIn(data: SignInForm) {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-
     console.log(data);
+
+    toast.success("Enviamos um link de autenticação para o seu e-mail", {
+      action: {
+        label: "Reenviar link",
+        onClick: () => {
+          handleSignIn(data);
+        },
+      },
+    });
   }
 
   return (
