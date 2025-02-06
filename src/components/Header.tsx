@@ -1,4 +1,4 @@
-import { Separator } from "@radix-ui/react-separator";
+import { Separator } from "./ui/separator";
 import { Home, Pizza, UtensilsCrossed } from "lucide-react";
 import { NavLink } from "./nav-link";
 import { ThemeToggle } from "./theme/theme-toggle";
