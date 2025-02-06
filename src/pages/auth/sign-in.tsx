@@ -1,9 +1,30 @@
+import { Helmet } from "react-helmet-async";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Helmet } from "react-helmet-async";
+
+const signInForm = z.object({
+  email: z.string().email(),
+});
+
+type SignInForm = z.infer<typeof signInForm>;
 
 export function SignInPage() {
+  const {
+    register,
+    handleSubmit,
+    formState: { isSubmitting },
+  } = useForm<SignInForm>();
+
+  async function handleSignIn(data: SignInForm) {
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
+    console.log(data);
+  }
+
   return (
     <>
       <Helmet title="Login" />
@@ -17,19 +38,23 @@ export function SignInPage() {
               Acompanhe suas vendas pelo painel do parceiro
             </p>
           </header>
-          <form className="space-y-4">
+          <form
+            onSubmit={handleSubmit(handleSignIn)}
+            className="space-y-4"
+          >
             <div className="space-y-2">
               <Label htmlFor="email">Seu e-mail</Label>
               <Input
                 type="email"
                 id="email"
-                name="email"
+                {...register("email", { required: true })}
               />
             </div>
 
             <Button
               className="w-full"
               type="submit"
+              disabled={isSubmitting}
             >
               Accessar Painel
             </Button>
