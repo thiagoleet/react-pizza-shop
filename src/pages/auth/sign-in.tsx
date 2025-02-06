@@ -6,11 +6,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-const signInForm = z.object({
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const signInFormSchema = z.object({
   email: z.string().email(),
 });
 
-type SignInForm = z.infer<typeof signInForm>;
+type SignInForm = z.infer<typeof signInFormSchema>;
 
 export function SignInPage() {
   const {
