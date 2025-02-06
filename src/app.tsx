@@ -3,7 +3,7 @@ import { Helmet, HelmetProvider } from "react-helmet-async";
 import { Toaster } from "sonner";
 import { QueryClientProvider } from "@tanstack/react-query";
 
-import { router } from "@/Routes";
+import { router } from "@/routes";
 import { queryClient } from "@/lib/react-query";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 
