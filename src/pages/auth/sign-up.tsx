@@ -1,22 +1,14 @@
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import { z } from "zod";
 import { toast } from "sonner";
+import { useMutation } from "@tanstack/react-query";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const signUpFormSchema = z.object({
-  restaurantName: z.string(),
-  managerName: z.string(),
-  phone: z.string(),
-  email: z.string().email(),
-});
-
-type SignUpForm = z.infer<typeof signUpFormSchema>;
+import { SignUpForm } from "@/models/sign-up.schema";
+import { registerRestaurant } from "@/api/register-restaurant";
 
 export function SignUpPage() {
   const {
@@ -25,19 +17,38 @@ export function SignUpPage() {
     formState: { isSubmitting },
   } = useForm<SignUpForm>();
 
+  const { mutateAsync: registerRestaurantFn } = useMutation({
+    mutationFn: registerRestaurant,
+  });
+
   const navigate = useNavigate();
 
-  async function handleSignUp(data: SignUpForm) {
-    console.log(data);
+  async function handleSignUp({
+    restaurantName,
+    managerName,
+    email,
+    phone,
+  }: SignUpForm) {
+    try {
+      await registerRestaurantFn({
+        restaurantName,
+        managerName,
+        email,
+        phone,
+      });
 
-    toast.success("Restaurente cadastrado com sucesso", {
-      action: {
-        label: "Login",
-        onClick: () => {
-          navigate("/sign-in");
+      toast.success("Restaurente cadastrado com sucesso", {
+        action: {
+          label: "Login",
+          onClick: () => {
+            navigate(`/sign-in?email=${email}`);
+          },
         },
-      },
-    });
+      });
+    } catch (error) {
+      console.error(error);
+      toast.error("Não foi possível cadastrar o restaurante");
+    }
   }
 
   return (
