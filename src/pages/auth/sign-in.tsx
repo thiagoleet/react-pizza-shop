@@ -1,11 +1,12 @@
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
+import { toast } from "sonner";
 import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { toast } from "sonner";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const signInFormSchema = z.object({
@@ -38,6 +39,14 @@ export function SignInPage() {
     <>
       <Helmet title="Login" />
       <main className="p-8">
+        <Button
+          className="absolute right-8 top-8"
+          variant="ghost"
+          asChild
+        >
+          <Link to="/sign-up">Novo Estabelecimento</Link>
+        </Button>
+
         <div className="w-[320px] flex flex-col justify-center gap-6">
           <header className="flex flex-col gap-2 text-center">
             <h1 className="text-2xl font-semibold tracking-tight">
@@ -55,7 +64,6 @@ export function SignInPage() {
               <Label htmlFor="email">Seu e-mail</Label>
               <Input
                 type="email"
-                id="email"
                 {...register("email", { required: true })}
               />
             </div>
