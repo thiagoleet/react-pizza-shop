@@ -11,11 +11,13 @@ import { OrdersPage } from "./pages/app/orders/orders";
 // Auth
 import { SignInPage } from "./pages/auth/sign-in";
 import { SignUpPage } from "./pages/auth/sign-up";
+import { NotFoundPage } from "./pages/404";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <AppLayout />,
+    errorElement: <NotFoundPage />,
     children: [
       {
         path: "/",
