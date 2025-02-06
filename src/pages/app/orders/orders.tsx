@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/table";
 import { OrderTableRow } from "./order-table-row";
 import { OrderTableFilters } from "./order-table-filters";
+import { Pagination } from "@/components/pagination";
 
 export function OrdersPage() {
   return (
@@ -43,6 +44,11 @@ export function OrdersPage() {
               </TableBody>
             </Table>
           </div>
+          <Pagination
+            pageIndex={0}
+            perPage={10}
+            totalCount={105}
+          />
         </section>
       </main>
     </>
