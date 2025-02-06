@@ -2,18 +2,13 @@ import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { toast } from "sonner";
-import { z } from "zod";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const signInFormSchema = z.object({
-  email: z.string().email(),
-});
-
-type SignInForm = z.infer<typeof signInFormSchema>;
+import { SignInForm } from "@/models/sign-in.schema";
+import { useMutation } from "@tanstack/react-query";
+import { signIn } from "@/api/sign-in";
 
 export function SignInPage() {
   const {
@@ -22,17 +17,34 @@ export function SignInPage() {
     formState: { isSubmitting },
   } = useForm<SignInForm>();
 
-  async function handleSignIn(data: SignInForm) {
-    console.log(data);
+  const { mutateAsync: authenticate } = useMutation({
+    mutationFn: signIn,
+  });
 
-    toast.success("Enviamos um link de autenticação para o seu e-mail", {
-      action: {
-        label: "Reenviar link",
-        onClick: () => {
-          handleSignIn(data);
+  async function handleSignIn({ email }: SignInForm) {
+    try {
+      await authenticate({ email });
+
+      toast.success("Enviamos um link de autenticação para o seu e-mail", {
+        action: {
+          label: "Reenviar link",
+          onClick: () => {
+            handleSignIn({ email });
+          },
         },
-      },
-    });
+      });
+    } catch (error) {
+      console.error(error);
+
+      toast.error("Não foi possível enviar o link de autenticação", {
+        action: {
+          label: "Tentar novamente?",
+          onClick: () => {
+            handleSignIn({ email });
+          },
+        },
+      });
+    }
   }
 
   return (
