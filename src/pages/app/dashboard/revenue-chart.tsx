@@ -8,16 +8,7 @@ import {
 
 import colors from "tailwindcss/colors";
 
-import {
-  ResponsiveContainer,
-  LineChart,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Lines,
-  Tooltip,
-  Line,
-} from "recharts";
+import { ResponsiveContainer, LineChart, XAxis, YAxis, Line } from "recharts";
 
 const dataMock = [
   {
