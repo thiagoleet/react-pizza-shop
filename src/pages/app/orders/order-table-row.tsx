@@ -1,10 +1,21 @@
+import { Search, ArrowRight, X } from "lucide-react";
+import { formatDistanceToNow } from "date-fns";
+import { ptBR } from "date-fns/locale";
+
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
 import { TableRow, TableCell } from "@/components/ui/table";
-import { Search, ArrowRight, X } from "lucide-react";
+
 import { OrderDetails } from "./order-details";
 
-export function OrderTableRow() {
+import { Order } from "@/models/order";
+import { OrderStatus } from "@/components/order-status";
+
+export interface OrderTableRowProps {
+  order: Order;
+}
+
+export function OrderTableRow({ order }: OrderTableRowProps) {
   return (
     <TableRow>
       <TableCell>
@@ -22,16 +33,25 @@ export function OrderTableRow() {
           <OrderDetails />
         </Dialog>
       </TableCell>
-      <TableCell className="font-mono text-xs font-medium">123456</TableCell>
-      <TableCell className="text-muted-foreground">Há 15 minutos</TableCell>
-      <TableCell>
-        <div className="flex items-center gap-2">
-          <span className="h-2 w-2 rounded-full bg-slate-400"></span>
-          <span className="font-medium text-muted-foreground">Pendente</span>
-        </div>
+      <TableCell className="font-mono text-xs font-medium">
+        {order.orderId}
       </TableCell>
-      <TableCell className="font-medium">John Doe</TableCell>
-      <TableCell className="font-medium">R$ 123,45</TableCell>
+      <TableCell className="text-muted-foreground">
+        {formatDistanceToNow(new Date(order.createdAt), {
+          locale: ptBR,
+          addSuffix: true,
+        })}
+      </TableCell>
+      <TableCell>
+        <OrderStatus order={order} />
+      </TableCell>
+      <TableCell className="font-medium">{order.customerName}</TableCell>
+      <TableCell className="font-medium">
+        {order.total.toLocaleString("pt-br", {
+          style: "currency",
+          currency: "BRL",
+        })}
+      </TableCell>
       <TableCell>
         <Button
           variant="outline"
