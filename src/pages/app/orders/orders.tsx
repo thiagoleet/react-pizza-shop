@@ -18,14 +18,24 @@ import { OrderTableFilters } from "./order-table-filters";
 export function OrdersPage() {
   const [searchParams, setSearchParams] = useSearchParams();
 
+  const orderId = searchParams.get("orderId") ?? "";
+  const customerName = searchParams.get("customerName") ?? "";
+  const status = searchParams.get("status") ?? "all";
+
   const pageIndex = z.coerce
     .number()
     .transform((page) => page - 1)
     .parse(searchParams.get("pageIndex") ?? "1");
 
   const { data: result } = useQuery({
-    queryKey: ["orders", pageIndex],
-    queryFn: () => getOrders({ pageIndex }),
+    queryKey: ["orders", pageIndex, orderId, customerName, status],
+    queryFn: () =>
+      getOrders({
+        pageIndex,
+        orderId,
+        customerName,
+        status: status === "all" ? undefined : status,
+      }),
   });
 
   function handlePaginate(pageIndex: number) {
