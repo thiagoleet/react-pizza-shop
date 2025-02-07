@@ -1,7 +1,7 @@
-import { Order, OrderStatus as Status } from "@/models/order";
+import { OrderStatus as Status } from "@/models/order";
 
 export interface OrderStatusProps {
-  order: Order;
+  status: Status;
 }
 
 const orderStatusMap: Record<Status, string> = {
@@ -12,9 +12,9 @@ const orderStatusMap: Record<Status, string> = {
   delivered: "Entregue",
 };
 
-export function OrderStatus({ order }: OrderStatusProps) {
+export function OrderStatus({ status }: OrderStatusProps) {
   const statusColorClass = () => {
-    switch (order.status) {
+    switch (status) {
       case "pending":
         return "bg-slate-400";
       case "canceled":
@@ -34,7 +34,7 @@ export function OrderStatus({ order }: OrderStatusProps) {
     <div className="flex items-center gap-2">
       <span className={`h-2 w-2 rounded-full ${statusColorClass()}`}></span>
       <span className="font-medium text-muted-foreground">
-        {orderStatusMap[order.status]}
+        {orderStatusMap[status]}
       </span>
     </div>
   );

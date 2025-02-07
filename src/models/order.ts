@@ -12,3 +12,29 @@ export type OrderStatus =
   | "processing"
   | "delivering"
   | "delivered";
+
+export interface OrderDetails {
+  id: string;
+  createdAt: string;
+  status: OrderStatus;
+  totalInCents: number;
+  customer: OrderCustomer;
+  orderItems: OrderItem[];
+}
+
+export interface OrderCustomer {
+  name: string;
+  email: string;
+  phone: string;
+}
+
+export interface OrderItem {
+  id: string;
+  priceInCents: number;
+  quantity: number;
+  product: OrderProduct;
+}
+
+export interface OrderProduct {
+  name: string;
+}
