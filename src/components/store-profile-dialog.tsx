@@ -28,6 +28,28 @@ import { updateProfile } from "@/api/update-profile";
 export function StoreProfileDialog() {
   const queryClient = useQueryClient();
 
+  const updateManagedRestaurantCache = ({
+    name,
+    description,
+  }: StoreProfileSchema) => {
+    const cached = queryClient.getQueryData<GetManagedRestaurantResponse>([
+      "managed-restaurant",
+    ]);
+
+    if (cached) {
+      queryClient.setQueryData<GetManagedRestaurantResponse>(
+        ["managed-restaurant"],
+        {
+          ...cached,
+          name,
+          description,
+        }
+      );
+    }
+
+    return { cached };
+  };
+
   const { data: managedRestaurant, isLoading: isLoadingManagedRestaurant } =
     useQuery({
       queryKey: ["managed-restaurant"],
@@ -36,20 +58,14 @@ export function StoreProfileDialog() {
 
   const { mutateAsync: updateProfileFn } = useMutation({
     mutationFn: updateProfile,
-    onSuccess(_, { name, description }) {
-      const cached = queryClient.getQueryData<GetManagedRestaurantResponse>([
-        "managed-restaurant",
-      ]);
+    onMutate({ name, description }) {
+      const { cached } = updateManagedRestaurantCache({ name, description });
 
-      if (cached) {
-        queryClient.setQueryData<GetManagedRestaurantResponse>(
-          ["managed-restaurant"],
-          {
-            ...cached,
-            name,
-            description,
-          }
-        );
+      return { previousProfile: cached };
+    },
+    onError(_, __, context) {
+      if (context?.previousProfile) {
+        updateManagedRestaurantCache(context.previousProfile);
       }
     },
   });
