@@ -7,18 +7,18 @@ export interface GetOrdersResponse {
   meta: {
     pageIndex: number;
     perPage: number;
-    total: number;
+    totalCount: number;
   };
 }
 
 export interface GetOrdersParams {
-  pageIndex: number;
+  pageIndex?: number | null;
 }
 
-export async function getOrders() {
+export async function getOrders({ pageIndex }: GetOrdersParams) {
   const response = await api.get<GetOrdersResponse>("/orders", {
     params: {
-      pageIndex: 0,
+      pageIndex,
     },
   });
 
