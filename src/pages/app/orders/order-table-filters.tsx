@@ -28,6 +28,7 @@ export function OrderTableFilters() {
     register,
     handleSubmit,
     control,
+    reset,
     formState: { isSubmitting },
   } = useForm<OrderFiltersSchema>({
     resolver: zodResolver(orderFiltersSchema),
@@ -70,6 +71,12 @@ export function OrderTableFilters() {
       state.delete("orderId");
       state.delete("customerName");
       state.delete("status");
+
+      reset({
+        orderId: "",
+        customerName: "",
+        status: "all",
+      });
 
       state.set("pageIndex", "1");
 
