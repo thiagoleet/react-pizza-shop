@@ -8,7 +8,7 @@ const orderStatusMap: Record<Status, string> = {
   pending: "Pendente",
   canceled: "Cancelado",
   processing: "Em preparo",
-  deliveryng: "Em entrega",
+  delivering: "Em entrega",
   delivered: "Entregue",
 };
 
@@ -20,9 +20,9 @@ export function OrderStatus({ order }: OrderStatusProps) {
       case "canceled":
         return "bg-rose-200";
       case "processing":
-        return "bg-ember-500";
-      case "deliveryng":
-        return "bg-ember-500";
+        return "bg-yellow-500";
+      case "delivering":
+        return "bg-cyan-500";
       case "delivered":
         return "bg-emerald-500";
       default:
