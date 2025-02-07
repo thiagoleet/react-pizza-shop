@@ -10,12 +10,14 @@ export interface PaginationProps {
   pageIndex: number;
   totalCount: number;
   perPage: number;
+  onPageChange: (pageIndex: number) => Promise<void> | void;
 }
 
 export function Pagination({
   pageIndex,
   totalCount,
   perPage,
+  onPageChange,
 }: PaginationProps) {
   const pages = Math.ceil(totalCount / perPage);
 
@@ -34,6 +36,8 @@ export function Pagination({
             variant="outline"
             size="xs"
             className="h-8 w-9 p-0"
+            onClick={() => onPageChange(0)}
+            disabled={pageIndex === 0}
           >
             <ChevronsLeft className="h-4 w-4" />
             <span className="sr-only">Primeira Página</span>
@@ -42,6 +46,8 @@ export function Pagination({
             variant="outline"
             size="xs"
             className="h-8 w-9 p-0"
+            onClick={() => onPageChange(pageIndex - 1)}
+            disabled={pageIndex === 0}
           >
             <ChevronLeft className="h-4 w-4" />
             <span className="sr-only">Página Anterior</span>
@@ -50,6 +56,8 @@ export function Pagination({
             variant="outline"
             size="xs"
             className="h-8 w-9 p-0"
+            onClick={() => onPageChange(pageIndex + 1)}
+            disabled={pageIndex === pages - 1}
           >
             <ChevronRight className="h-4 w-4" />
             <span className="sr-only">Próxima Página</span>
@@ -58,6 +66,8 @@ export function Pagination({
             variant="outline"
             size="xs"
             className="h-8 w-9 p-0"
+            onClick={() => onPageChange(pages - 1)}
+            disabled={pageIndex === pages - 1}
           >
             <ChevronsRight className="h-4 w-4" />
             <span className="sr-only">Última Página</span>
