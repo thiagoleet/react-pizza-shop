@@ -18,7 +18,7 @@ export function OrderStatus({ status }: OrderStatusProps) {
       case "pending":
         return "bg-slate-400";
       case "canceled":
-        return "bg-rose-200";
+        return "bg-rose-500";
       case "processing":
         return "bg-yellow-500";
       case "delivering":
@@ -32,7 +32,10 @@ export function OrderStatus({ status }: OrderStatusProps) {
 
   return (
     <div className="flex items-center gap-2">
-      <span className={`h-2 w-2 rounded-full ${statusColorClass()}`}></span>
+      <span
+        data-testid="badge"
+        className={`h-2 w-2 rounded-full ${statusColorClass()}`}
+      ></span>
       <span className="font-medium text-muted-foreground">
         {orderStatusMap[status]}
       </span>
