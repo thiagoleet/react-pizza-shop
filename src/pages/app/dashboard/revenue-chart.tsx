@@ -23,6 +23,7 @@ import { DateRangePicker } from "@/components/ui/date-range-picker";
 import { useMemo, useState } from "react";
 import { DateRange } from "react-day-picker";
 import { subDays } from "date-fns";
+import { Loader2 } from "lucide-react";
 
 export function RevenueChart() {
   const [dateRange, setDateRange] = useState<DateRange | undefined>({
@@ -65,7 +66,7 @@ export function RevenueChart() {
         </div>
       </CardHeader>
       <CardContent>
-        {dailyRevenueInPeriod && (
+        {dailyRevenueInPeriod ? (
           <>
             <ResponsiveContainer
               width="100%"
@@ -106,6 +107,10 @@ export function RevenueChart() {
               </LineChart>
             </ResponsiveContainer>
           </>
+        ) : (
+          <div className="flex h-[240px] w-full items-center justify-center">
+            <Loader2 className="h-8 w-8 text-muted-foreground animate-spin" />
+          </div>
         )}
       </CardContent>
     </Card>
