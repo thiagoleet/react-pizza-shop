@@ -11,13 +11,16 @@ import { OrdersPage } from "./pages/app/orders/orders";
 // Auth
 import { SignInPage } from "./pages/auth/sign-in";
 import { SignUpPage } from "./pages/auth/sign-up";
+
+// Error
 import { NotFoundPage } from "./pages/404";
+import { ErrorPage } from "./pages/error";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <AppLayout />,
-    errorElement: <NotFoundPage />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -42,5 +45,9 @@ export const router = createBrowserRouter([
         element: <SignUpPage />,
       },
     ],
+  },
+  {
+    path: "*",
+    element: <NotFoundPage />,
   },
 ]);
