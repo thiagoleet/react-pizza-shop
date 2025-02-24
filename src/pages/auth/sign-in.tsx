@@ -82,6 +82,7 @@ export function SignInPage() {
               <Label htmlFor="email">Seu e-mail</Label>
               <Input
                 type="email"
+                id="email"
                 {...register("email", { required: true })}
               />
             </div>
