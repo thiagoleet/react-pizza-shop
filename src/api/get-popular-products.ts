@@ -1,4 +1,5 @@
 import { api } from "@/lib/axios";
+import { metrics } from "./constants/metrics";
 
 export type GetPopularProductsResponse = {
   product: string;
@@ -7,7 +8,7 @@ export type GetPopularProductsResponse = {
 
 export async function getPopularProducts() {
   const response = await api.get<GetPopularProductsResponse>(
-    "/metrics/popular-products"
+    metrics.popularProducts
   );
 
   return response.data;

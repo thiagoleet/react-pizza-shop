@@ -1,4 +1,5 @@
 import { api } from "@/lib/axios";
+import { metrics } from "./constants/metrics";
 
 export interface GetMonthOrdersAmountResponse {
   amount: number;
@@ -7,7 +8,7 @@ export interface GetMonthOrdersAmountResponse {
 
 export async function getMonthOrdersAmount() {
   const response = await api.get<GetMonthOrdersAmountResponse>(
-    "/metrics/month-orders-amount"
+    metrics.monthOrdersAmount
   );
 
   return response.data;

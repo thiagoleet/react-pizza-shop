@@ -1,4 +1,5 @@
 import { api } from "@/lib/axios";
+import { metrics } from "./constants/metrics";
 
 export type GetDailyRevenueInPeriodResponse = {
   date: string;
@@ -15,7 +16,7 @@ export async function getDailyRevenueInPeriod({
   to,
 }: GetDailyRevenueInPeriodQuery) {
   const response = await api.get<GetDailyRevenueInPeriodResponse>(
-    "/metrics/daily-receipt-in-period",
+    metrics.daylyReceiptInPeriod,
     {
       params: {
         from: from?.toISOString(),
