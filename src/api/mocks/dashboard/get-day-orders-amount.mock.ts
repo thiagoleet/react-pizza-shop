@@ -1,6 +1,6 @@
 import { http, HttpResponse } from "msw";
-import { GetDayOrdersAmountResponse } from "../get-day-orders-amount";
-import { metrics } from "../constants/metrics";
+import { GetDayOrdersAmountResponse } from "../../get-day-orders-amount";
+import { metrics } from "../../constants/metrics";
 
 export const getDayOrdersAmountMock = http.get<
   never,

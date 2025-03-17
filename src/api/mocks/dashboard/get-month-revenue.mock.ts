@@ -1,6 +1,6 @@
 import { http, HttpResponse } from "msw";
-import { metrics } from "../constants/metrics";
-import { GetMonthRevenueResponse } from "../get-month-revenue";
+import { metrics } from "../../constants/metrics";
+import { GetMonthRevenueResponse } from "../../get-month-revenue";
 
 export const getMonthRevenueMock = http.get<
   never,
