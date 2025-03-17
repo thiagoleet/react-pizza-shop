@@ -8,7 +8,7 @@ export const getMonthRevenueMock = http.get<
   GetMonthRevenueResponse
 >(metrics.monthCanceledOrdersAmount, async () => {
   return HttpResponse.json({
-    receipt: 5,
-    diffFromLastMonth: 200,
+    receipt: 1000,
+    diffFromLastMonth: 20,
   });
 });
