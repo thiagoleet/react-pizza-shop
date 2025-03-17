@@ -1,5 +1,5 @@
 import { api } from "@/lib/axios";
-import { metrics } from "./constants/metrics";
+import { metrics } from "../constants/metrics";
 
 export interface GetMonthOrdersAmountResponse {
   amount: number;

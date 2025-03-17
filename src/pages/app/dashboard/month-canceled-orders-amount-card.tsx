@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { DollarSign } from "lucide-react";
 
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { getMonthCanceledOrdersAmount } from "@/api/get-month-canceled-orders-amount";
+import { getMonthCanceledOrdersAmount } from "@/api/dashboard/get-month-canceled-orders-amount";
 import { MetricCardSkeleton } from "./metric-card-skeleton";
 
 export function MonthCanceledOrdersAmountCard() {

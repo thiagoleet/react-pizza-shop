@@ -17,7 +17,7 @@ import {
   CartesianGrid,
 } from "recharts";
 import { useQuery } from "@tanstack/react-query";
-import { getDailyRevenueInPeriod } from "@/api/get-daily-revenue-in-period";
+import { getDailyRevenueInPeriod } from "@/api/dashboard/get-daily-revenue-in-period";
 import { Label } from "@/components/ui/label";
 import { DateRangePicker } from "@/components/ui/date-range-picker";
 import { useMemo, useState } from "react";

@@ -5,7 +5,7 @@ import colors from "tailwindcss/colors";
 import { ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
 import { BarChart, Loader2 } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
-import { getPopularProducts } from "@/api/get-popular-products";
+import { getPopularProducts } from "@/api/dashboard/get-popular-products";
 
 const COLORS = [
   colors.sky[500],

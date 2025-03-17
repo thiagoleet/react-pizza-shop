@@ -1,4 +1,4 @@
-import { getDayOrdersAmount } from "@/api/get-day-orders-amount";
+import { getDayOrdersAmount } from "@/api/dashboard/get-day-orders-amount";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { useQuery } from "@tanstack/react-query";
 import { Utensils } from "lucide-react";

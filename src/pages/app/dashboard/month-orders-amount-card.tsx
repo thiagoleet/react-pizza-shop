@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { Utensils } from "lucide-react";
 
-import { getMonthOrdersAmount } from "@/api/get-month-orders-amount";
+import { getMonthOrdersAmount } from "@/api/dashboard/get-month-orders-amount";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { MetricCardSkeleton } from "./metric-card-skeleton";
 

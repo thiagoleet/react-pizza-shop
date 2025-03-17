@@ -2,7 +2,7 @@ import { Building, ChevronDown, LogOut } from "lucide-react";
 import { useMutation, useQuery } from "@tanstack/react-query";
 
 import { getProfile } from "@/api/auth/get-profile";
-import { getManagedRestaurant } from "@/api/get-managed-restaurant";
+import { getManagedRestaurant } from "@/api/auth/get-managed-restaurant";
 
 import {
   DropdownMenu,

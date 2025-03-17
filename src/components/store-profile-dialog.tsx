@@ -18,7 +18,7 @@ import { Textarea } from "./ui/textarea";
 import {
   getManagedRestaurant,
   GetManagedRestaurantResponse,
-} from "@/api/get-managed-restaurant";
+} from "@/api/auth/get-managed-restaurant";
 import {
   storeProfileSchema,
   StoreProfileSchema,
