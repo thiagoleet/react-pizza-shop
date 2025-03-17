@@ -23,7 +23,7 @@ import {
   storeProfileSchema,
   StoreProfileSchema,
 } from "@/schemas/store-profile.schema";
-import { updateProfile } from "@/api/update-profile";
+import { updateProfile } from "@/api/auth/update-profile";
 
 export function StoreProfileDialog() {
   const queryClient = useQueryClient();

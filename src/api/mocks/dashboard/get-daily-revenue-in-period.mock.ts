@@ -1,6 +1,6 @@
 import { http, HttpResponse } from "msw";
 import { metrics } from "../../constants/metrics";
-import { GetDailyRevenueInPeriodResponse } from "../../get-daily-revenue-in-period";
+import { GetDailyRevenueInPeriodResponse } from "@/api/dashboard/get-daily-revenue-in-period";
 
 export const getDailyRevenueInPeriodMock = http.get<
   never,

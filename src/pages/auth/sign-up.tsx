@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { SignUpForm } from "@/schemas/sign-up.schema";
-import { registerRestaurant } from "@/api/register-restaurant";
+import { registerRestaurant } from "@/api/auth/register-restaurant";
 
 export function SignUpPage() {
   const {

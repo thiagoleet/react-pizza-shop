@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { getOrderDetails } from "@/api/get-order-details";
+import { getOrderDetails } from "@/api/orders/get-order-details";
 
 import {
   DialogContent,

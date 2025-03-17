@@ -13,11 +13,11 @@ import { OrderDetails } from "./order-details";
 
 import { Order, OrderStatus as OrderStatusType } from "@/models/order";
 import { OrderStatus } from "@/components/order-status";
-import { cancelOrder } from "@/api/cancel-order";
-import { GetOrdersResponse } from "@/api/get-orders";
-import { approveOrder } from "@/api/approve-order";
-import { dispatchOrder } from "@/api/dispatch-order";
-import { deliverOrder } from "@/api/deliver-order";
+import { cancelOrder } from "@/api/orders/cancel-order";
+import { GetOrdersResponse } from "@/api/orders/get-orders";
+import { approveOrder } from "@/api/orders/approve-order";
+import { dispatchOrder } from "@/api/orders/dispatch-order";
+import { deliverOrder } from "@/api/orders/deliver-order";
 
 export interface OrderTableRowProps {
   order: Order;

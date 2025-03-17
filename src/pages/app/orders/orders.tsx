@@ -3,7 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { z } from "zod";
 
-import { getOrders } from "@/api/get-orders";
+import { getOrders } from "@/api/orders/get-orders";
 import { Pagination } from "@/components/pagination";
 import {
   Table,

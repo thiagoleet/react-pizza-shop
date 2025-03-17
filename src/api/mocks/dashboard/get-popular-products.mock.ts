@@ -1,6 +1,6 @@
 import { http, HttpResponse } from "msw";
 import { metrics } from "../../constants/metrics";
-import { GetPopularProductsResponse } from "../../get-popular-products";
+import { GetPopularProductsResponse } from "@/api/dashboard/get-popular-products";
 
 export const getPopularProductsMock = http.get<
   never,

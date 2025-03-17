@@ -1,6 +1,6 @@
 import { http, HttpResponse } from "msw";
-import { GetMonthCanceledOrdersAmountResponse } from "../../get-month-canceled-orders-amount";
 import { metrics } from "../../constants/metrics";
+import { GetMonthCanceledOrdersAmountResponse } from "@/api/dashboard/get-month-canceled-orders-amount";
 
 export const getMonthCanceledOrdersAmountMock = http.get<
   never,

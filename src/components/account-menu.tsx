@@ -1,7 +1,7 @@
 import { Building, ChevronDown, LogOut } from "lucide-react";
 import { useMutation, useQuery } from "@tanstack/react-query";
 
-import { getProfile } from "@/api/get-profile";
+import { getProfile } from "@/api/auth/get-profile";
 import { getManagedRestaurant } from "@/api/get-managed-restaurant";
 
 import {
@@ -16,7 +16,7 @@ import { Button } from "./ui/button";
 import { Skeleton } from "./ui/skeleton";
 import { Dialog, DialogTrigger } from "./ui/dialog";
 import { StoreProfileDialog } from "./store-profile-dialog";
-import { signOut } from "@/api/sign-out";
+import { signOut } from "@/api/auth/sign-out";
 import { useNavigate } from "react-router-dom";
 
 export function AccountMenu() {
