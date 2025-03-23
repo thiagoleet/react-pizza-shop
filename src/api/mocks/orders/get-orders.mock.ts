@@ -13,7 +13,7 @@ const statuses: OrderStatus[] = [
   "delivering",
 ];
 
-const orders: Orders = Array.from({ length: 60 }).map((_, index) => {
+const orders: Orders = Array.from({ length: 66 }).map((_, index) => {
   return {
     orderId: `order-${index + 1}`,
     customerName: `Customer ${index + 1}`,
