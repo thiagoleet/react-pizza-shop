@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-test("signin successfully", async ({ page }) => {
+test("sign-in successfully", async ({ page }) => {
   await page.goto("/sign-in", { waitUntil: "networkidle" });
 
   await page.getByText("Seu e-mail").fill("john.doe@example.com");
@@ -16,7 +16,7 @@ test("signin successfully", async ({ page }) => {
   await page.waitForTimeout(2000);
 });
 
-test("signin with wrong credentials", async ({ page }) => {
+test("sign-in with wrong credentials", async ({ page }) => {
   await page.goto("/sign-in", { waitUntil: "networkidle" });
 
   await page.getByText("Seu e-mail").fill("wrong-email@example.com");
