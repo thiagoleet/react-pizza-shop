@@ -79,12 +79,14 @@ export function SignUpPage() {
               <Label htmlFor="restaurantName">Nome do estabelecimento</Label>
               <Input
                 type="text"
+                id="restaurantName"
                 {...register("restaurantName", { required: true })}
               />
             </div>
             <div className="space-y-2">
               <Label htmlFor="managerName">Seu nome</Label>
               <Input
+                id="managerName"
                 type="text"
                 {...register("managerName", { required: true })}
               />
@@ -92,6 +94,7 @@ export function SignUpPage() {
             <div className="space-y-2">
               <Label htmlFor="email">Seu e-mail</Label>
               <Input
+                id="email"
                 type="email"
                 {...register("email", { required: true })}
               />
@@ -99,6 +102,7 @@ export function SignUpPage() {
             <div className="space-y-2">
               <Label htmlFor="phone">Seu celular</Label>
               <Input
+                id="phone"
                 type="tel"
                 inputMode="tel"
                 {...register("phone", { required: true })}
