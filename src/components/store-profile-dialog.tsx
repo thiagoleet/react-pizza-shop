@@ -116,6 +116,8 @@ export function StoreProfileDialog() {
               Nome
             </Label>
             <Input
+              type="text"
+              id="name"
               className="col-span-3"
               {...register("name")}
             />
@@ -129,6 +131,7 @@ export function StoreProfileDialog() {
               Descrição
             </Label>
             <Textarea
+              id="description"
               className="col-span-3"
               {...register("description")}
             />
