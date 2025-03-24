@@ -19,10 +19,16 @@ export function DayOrdersAmountCard() {
       <CardContent className="space-y-1">
         {dayOrdersAmount ? (
           <>
-            <span className="text-2xl font-semibold tracking-tight">
+            <span
+              className="text-2xl font-semibold tracking-tight"
+              data-testid="day-orders-amount"
+            >
               {dayOrdersAmount.amount.toLocaleString("pt-BR")}
             </span>
-            <p className="text-xs text-muted-foreground">
+            <p
+              className="text-xs text-muted-foreground"
+              data-testid="day-orders-amount-diff"
+            >
               {dayOrdersAmount.diffFromYesterday >= 0 ? (
                 <>
                   <span className="text-emerald-500 dark:text-emerald-400">
